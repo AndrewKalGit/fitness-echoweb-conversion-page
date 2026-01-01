@@ -1,36 +1,166 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ConversionSystems - Fitness Studio Landing Page
+
+A conversion-focused landing page for boutique fitness studios built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- Clean, professional Equinox-inspired design
+- Conversion-optimized layout with clear CTAs
+- EmailJS integration for lead capture (server-side for security)
+- Responsive design for all devices
+- Privacy Policy and Terms & Conditions pages
+- Google Analytics ready (GA4)
+- Split components for easy maintenance
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ installed
+- EmailJS account (free tier available)
+
+### Installation
+
+1. Clone or download this repository
+
+2. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Set up environment variables:
+   - Copy `.env.local.example` to `.env.local`
+   - Fill in your EmailJS credentials
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Learn More
+## EmailJS Setup
 
-To learn more about Next.js, take a look at the following resources:
+1. Go to [EmailJS Dashboard](https://dashboard.emailjs.com/)
+2. Create a free account if you don't have one
+3. Add an Email Service (Gmail, Outlook, etc.)
+4. Create an Email Template with these variables:
+   - `{{studio_name}}`
+   - `{{owner_name}}`
+   - `{{email}}`
+   - `{{phone}}`
+   - `{{studio_type}}`
+   - `{{member_count}}`
+   - `{{current_website}}`
+   - `{{biggest_challenge}}`
+5. Copy your Service ID, Template ID, and Public Key to `.env.local`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Example Email Template
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+New Conversion Audit Request
 
-## Deploy on Vercel
+Studio Name: {{studio_name}}
+Owner Name: {{owner_name}}
+Email: {{email}}
+Phone: {{phone}}
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Studio Type: {{studio_type}}
+Member Count: {{member_count}}
+Current Website: {{current_website}}
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Biggest Challenge:
+{{biggest_challenge}}
+```
+
+## Project Structure
+
+```
+├── app/
+│   ├── actions/
+│   │   └── send-email.ts     # Server action for EmailJS
+│   ├── page.tsx              # Main landing page
+│   ├── privacy/page.tsx      # Privacy policy page
+│   ├── terms/page.tsx        # Terms & conditions page
+│   ├── layout.tsx            # Root layout
+│   └── globals.css           # Global styles
+├── components/
+│   ├── hero-section.tsx
+│   ├── problem-section.tsx
+│   ├── solution-section.tsx
+│   ├── outcomes-section.tsx
+│   ├── case-studies-section.tsx
+│   ├── social-proof-section.tsx
+│   ├── pricing-section.tsx
+│   ├── audit-section.tsx     # Contact form with EmailJS
+│   ├── footer.tsx
+│   └── ui/                   # shadcn/ui components
+├── public/                   # Static images
+└── .env.local.example        # Environment variables template
+```
+
+## Customization
+
+### Colors and Gradients
+
+The site uses a minimal gray palette with subtle gradients. Customize in `app/globals.css`:
+
+```css
+--background: 0 0% 100%;
+--foreground: 0 0% 3.9%;
+/* etc. */
+```
+
+### Content
+
+Edit the component files in `/components` to update:
+- Pricing tiers
+- Case study content
+- Testimonials
+- Studio types
+- CTAs
+
+### Images
+
+Replace placeholder images in `/public` with your own:
+- `modern-fitness-studio-interior-with-training-equip.jpg`
+- `mma-gym-training-with-heavy-bags-and-fighters.jpg`
+- `boxing-gym-with-ring-and-training-equipment.jpg`
+- `taekwondo-school-with-students-training-in-uniform.jpg`
+- `boutique-fitness-studio-with-yoga-and-pilates-equi.jpg`
+
+## Deployment
+
+### Deploy to Vercel
+
+1. Push your code to GitHub
+2. Import your repository on [Vercel](https://vercel.com)
+3. Add your environment variables in Vercel project settings
+4. Deploy!
+
+### Environment Variables on Vercel
+
+Add these in your Vercel project settings under Environment Variables (without NEXT_PUBLIC_ prefix):
+- `EMAILJS_SERVICE_ID`
+- `EMAILJS_TEMPLATE_ID`
+- `EMAILJS_PUBLIC_KEY`
+
+## Analytics Setup (Optional)
+
+To add Google Analytics 4:
+
+1. Create a GA4 property at [Google Analytics](https://analytics.google.com)
+2. Install the Vercel Analytics package (already included)
+3. Add your measurement ID to the project
+
+## License
+
+This project is for client use. Customize and deploy as needed.
+
+## Support
+
+For questions or issues with setup, refer to:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [EmailJS Documentation](https://www.emailjs.com/docs/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+# fitness-echoweb-conversion-page
