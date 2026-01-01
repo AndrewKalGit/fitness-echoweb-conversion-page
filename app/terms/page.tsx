@@ -1,25 +1,9 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
+
 
 export default function TermsAndConditions() {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <Link href="/" className="text-lg font-semibold tracking-tight">
-            ConversionSystems
-          </Link>
-          <Button asChild size="sm" variant="ghost">
-            <Link href="/">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Home
-            </Link>
-          </Button>
-        </div>
-      </header>
-
+      
       <main className="pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Terms and Conditions</h1>
@@ -270,8 +254,8 @@ export default function TermsAndConditions() {
               <div className="text-muted-foreground leading-relaxed">
                 <p>
                   <strong>Email:</strong>{" "}
-                  <a href="mailto:legal@conversionsystems.com" className="text-foreground underline hover:no-underline">
-                    legal@conversionsystems.com
+                  <a href="mailto:contact@echowebagency.com" className="text-foreground underline hover:no-underline">
+                    contact@echowebagency.com
                   </a>
                 </p>
                 <p className="mt-2">
@@ -282,20 +266,6 @@ export default function TermsAndConditions() {
           </div>
         </div>
       </main>
-
-      <footer className="border-t border-border py-8 px-4 bg-gradient-to-b from-white to-gray-50">
-        <div className="container mx-auto text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} ConversionSystems. All rights reserved.</p>
-          <div className="flex justify-center gap-6 mt-4">
-            <Link href="/privacy" className="hover:text-foreground transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-foreground transition-colors">
-              Terms & Conditions
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

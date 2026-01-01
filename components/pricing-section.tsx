@@ -56,7 +56,7 @@ export function PricingSection() {
           </Card> */}
 
           <Card className="p-8 border-2 border-gray-900 bg-gradient-to-br from-gray-50 to-white relative">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white px-4 py-1 rounded-full text-sm font-medium">
+            <div className="absolute w-50 sm:max-w-auto -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 text-white px-4 py-1 rounded-full text-sm font-medium">
               January Special 50% Off!
             </div>
             <h3 className="text-2xl font-bold mb-2">Botique Gym Website</h3>

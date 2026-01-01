@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import { sendAuditRequest } from "@/app/actions/send-email"
+import Script from "next/script"
 
 export function AuditSection() {
   const [formData, setFormData] = useState({
@@ -185,6 +186,7 @@ export function AuditSection() {
               We'll respond within 24 hours on business days. Typically faster.
             </p>
           </form>
+        <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY}></div>
         </Card>
       </div>
     </section>

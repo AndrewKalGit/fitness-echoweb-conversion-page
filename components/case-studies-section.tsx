@@ -1,9 +1,8 @@
 import { Card } from "@/components/ui/card"
-import Image from "next/image"
 
 export function CaseStudiesSection() {
 
-// TODO: Replace the image placeholders with video demos later 
+// TODO: add case study videos from youtube
 
   return (
     <section id="case-studies" className="py-20 px-4">
@@ -22,14 +21,12 @@ export function CaseStudiesSection() {
         <div className="space-y-8">
           <Card className="overflow-hidden border-border bg-white">
             <div className="grid md:grid-cols-2">
-              <div className="relative h-64 md:h-auto bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
-                <Image
-                  src="/mma-gym-training-with-heavy-bags-and-fighters.jpg"
-                  alt="MMA gym training environment"
-                  fill
-                  className="object-cover"
+                <div className="relative h-64 md:h-auto bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.youtube.com/embed/"
+                  className="w-full h-full"
                 />
-              </div>
+                </div>
               <div className="p-8">
                 <div className="text-sm font-medium text-muted-foreground mb-2">MMA GYM</div>
                 <h3 className="text-2xl font-bold mb-4">Elite Combat Training</h3>
@@ -62,9 +59,9 @@ export function CaseStudiesSection() {
 
           <Card className="overflow-hidden border-border bg-white">
             <div className="grid md:grid-cols-2">
-              <div className="relative h-64 md:h-auto bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
-                <Image src="/boxing-gym-with-ring-and-training-equipment.jpg" alt="Boxing gym with ring" fill className="object-cover" />
-              </div>
+                <div className="relative h-64 md:h-auto bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 overflow-hidden rounded-lg">
+                <iframe src="https://www.youtube.com/embed/" className="w-full h-full object-cover" />
+                </div>
               <div className="p-8">
                 <div className="text-sm font-medium text-muted-foreground mb-2">BOXING GYM</div>
                 <h3 className="text-2xl font-bold mb-4">Brooklyn Boxing Club</h3>
@@ -97,9 +94,9 @@ export function CaseStudiesSection() {
 
           <Card className="overflow-hidden border-border bg-white">
             <div className="grid md:grid-cols-2">
-              <div className="relative h-64 md:h-auto bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
-                <Image src="/taekwondo-school-with-students-training-in-uniform.jpg" alt="Taekwondo training class" fill className="object-cover" />
-              </div>
+                <div className="relative h-64 md:h-auto bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 rounded-lg overflow-hidden">
+                <iframe src="https://www.youtube.com/embed/" className="w-full h-full object-cover rounded-lg" />
+                </div>
               <div className="p-8">
                 <div className="text-sm font-medium text-muted-foreground mb-2">TAEKWONDO SCHOOL</div>
                 <h3 className="text-2xl font-bold mb-4">Family Taekwondo Center</h3>
@@ -132,14 +129,12 @@ export function CaseStudiesSection() {
 
           <Card className="overflow-hidden border-border bg-white">
             <div className="grid md:grid-cols-2">
-              <div className="relative h-64 md:h-auto bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
-                <Image
-                  src="/boutique-fitness-studio-with-yoga-and-pilates-equi.jpg"
-                  alt="Boutique fitness studio interior"
-                  fill
-                  className="object-cover"
+                <div className="relative h-64 md:h-auto bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.youtube.com/embed/"
+                  className="w-full h-full object-cover rounded-lg"
                 />
-              </div>
+                </div>
               <div className="p-8">
                 <div className="text-sm font-medium text-muted-foreground mb-2">BOUTIQUE FITNESS STUDIO</div>
                 <h3 className="text-2xl font-bold mb-4">Core Performance Studio</h3>

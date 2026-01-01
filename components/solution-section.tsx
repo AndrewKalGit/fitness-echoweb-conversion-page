@@ -6,9 +6,9 @@ export function SolutionSection() {
     <section id="solution" className="py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-balance mb-4">The Conversion System</h2>
-          <p className="text-lg text-muted-foreground text-balance max-w-2xl mx-auto">
-            Not just a website. A conversion layer that sits between attention and action.
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-balance mb-4">The Conversion Optimzation</h2>
+          <p className="text-lg text-muted-foreground text-balance">
+            Not just a brochure website. A conversion layer that sits between attention and action.
           </p>
         </div>
 
@@ -32,7 +32,7 @@ export function SolutionSection() {
                 <Users className="h-5 w-5 text-gray-900" />
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Pre-Answered Questions</h3>
+                <h3 className="font-semibold mb-2">Pre-Answered Questions with Proper Organization & Layouts</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   We anticipate what people wonder about experience level, commitment, cost and answer it before they
                   ask.

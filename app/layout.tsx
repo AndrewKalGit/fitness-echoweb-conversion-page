@@ -3,12 +3,15 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
+import Header from "@/components/header"
+import { Footer } from "@/components/footer"
+import Script from "next/script"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "ConversionSystems - Conversion Systems for Boutique Fitness Studios",
+  title: "Conversion Optimized Design for Boutique Fitness Studios",
   description:
     "Turn interest into qualified member inquiries. Conversion systems for boutique fitness studios with existing traffic but inconsistent conversions. No heavy ad spend required.",
   keywords: [
@@ -43,6 +46,9 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
+  other: {
+    "preconnect": "https://challenges.cloudflare.com",
+  },
 }
 
 export default function RootLayout({
@@ -52,8 +58,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://challenges.cloudflare.com" />
+      </head>
       <body className={`font-sans antialiased`}>
+        <Script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            async
+            defer
+          ></Script>
+        <Header />
         {children}
+        <Footer />
         <Analytics />
       </body>
     </html>

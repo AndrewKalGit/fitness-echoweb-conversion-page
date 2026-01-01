@@ -1,4 +1,6 @@
+import Image from "next/image"
 import Link from "next/link"
+import logo from "@/public/logo.png"
 
 export function Footer() {
   return (
@@ -6,9 +8,9 @@ export function Footer() {
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="font-semibold mb-4">ConversionSystems</h3>
+            <Image src={logo} alt="Logo" width={120} height={40} />
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Conversion-focused systems for boutique fitness studios in NJ, NYC, and Philadelphia.
+              Conversion-focused Web Design for boutique fitness studios in NJ, NYC, and Philadelphia.
             </p>
           </div>
 
@@ -16,17 +18,17 @@ export function Footer() {
             <h4 className="font-semibold mb-4 text-sm">Services</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="#solution" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Conversion Systems
+                <Link href="/#solution" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Conversion Optimized Web Design
                 </Link>
               </li>
               <li>
-                <Link href="#case-studies" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/#case-studies" className="text-muted-foreground hover:text-foreground transition-colors">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
                   Pricing
                 </Link>
               </li>
