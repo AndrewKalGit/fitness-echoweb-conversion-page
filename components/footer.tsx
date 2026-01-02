@@ -10,8 +10,17 @@ export function Footer() {
           <div>
             <Image src={logo} alt="Logo" width={120} height={40} />
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Conversion-focused Web Design for boutique fitness studios in NJ, NYC, and Philadelphia.
+               📍 Conversion-focused Web Design for boutique fitness studios in NJ, NYC, and Philadelphia.
             </p>
+            <ul>
+              <li className="text-sm text-muted-foreground mt-2">
+                <a href="tel:(732)-595-7217">(732)-595-7217</a>
+              </li>
+              <li className="text-sm text-muted-foreground mt-2">
+                <a href="mailto:contact@echowebagency.com" className="text-muted-foreground hover:text-foreground transition-colors">
+                  contact@echowebagency.com</a>
+              </li>
+            </ul>
           </div>
 
           <div>

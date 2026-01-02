@@ -7,9 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { useState } from "react"
-import { sendAuditRequest } from "@/app/actions/send-email"
-import Script from "next/script"
+import { useState, useEffect } from "react"
+import emailjs from "@emailjs/browser"
 
 export function AuditSection() {
   const [formData, setFormData] = useState({
@@ -25,26 +24,68 @@ export function AuditSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
+  useEffect(() => {
+    // Initialize EmailJS once when component mounts
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    console.log("EmailJS Public Key:", publicKey ? "Found" : "Missing")
+    console.log("Service ID:", process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ? "Found" : "Missing")
+    console.log("Template ID:", process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ? "Found" : "Missing")
+    
+    if (publicKey) {
+      emailjs.init(publicKey)
+    }
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus("idle")
 
-    const result = await sendAuditRequest(formData)
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+    
+    if (!serviceId || !templateId) {
+      console.error("EmailJS configuration is missing. Please check your environment variables.")
+      setSubmitStatus("error")
+      setIsSubmitting(false)
+      return
+    }
 
-    if (result.success) {
-      setSubmitStatus("success")
-      setFormData({
-        studioName: "",
-        ownerName: "",
-        email: "",
-        phone: "",
-        studioType: "",
-        memberCount: "",
-        currentWebsite: "",
-        biggestChallenge: "",
-      })
-    } else {
+    try {
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          studio_name: formData.studioName,
+          owner_name: formData.ownerName,
+          user_email: formData.email,
+          phone: formData.phone || "Not provided",
+          studio_type: formData.studioType,
+          member_count: formData.memberCount || "Not provided",
+          current_website: formData.currentWebsite || "Not provided",
+          biggest_challenge: formData.biggestChallenge,
+        }
+      )
+
+      console.log("EmailJS response:", result)
+      
+      if (result.status === 200 || result.text === "OK") {
+        setSubmitStatus("success")
+        setFormData({
+          studioName: "",
+          ownerName: "",
+          email: "",
+          phone: "",
+          studioType: "",
+          memberCount: "",
+          currentWebsite: "",
+          biggestChallenge: "",
+        })
+      } else {
+        setSubmitStatus("error")
+      }
+    } catch (error) {
+      console.error("Error sending email:", error)
       setSubmitStatus("error")
     }
 
@@ -85,7 +126,7 @@ export function AuditSection() {
                   required
                   value={formData.ownerName}
                   onChange={(e) => setFormData({ ...formData, ownerName: e.target.value })}
-                  placeholder="Your full name"
+                  placeholder="Your name"
                 />
               </div>
             </div>
@@ -123,7 +164,7 @@ export function AuditSection() {
                   required
                   value={formData.studioType}
                   onChange={(e) => setFormData({ ...formData, studioType: e.target.value })}
-                  placeholder="e.g., CrossFit, MMA, Yoga"
+                  placeholder="e.g., CrossFit, MMA, TKD, Boxing, Yoga"
                 />
               </div>
 
@@ -177,16 +218,16 @@ export function AuditSection() {
               type="submit"
               size="lg"
               className="w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 hover:from-gray-800 hover:via-gray-700 hover:to-gray-600"
-              disabled={isSubmitting}
+              disabled={isSubmitting || submitStatus === "success"}
             >
-              {isSubmitting ? "Sending..." : "Request Free Audit"}
+              {isSubmitting ? "Sending..." : submitStatus === "success" ? "✓ Request Sent" : "Request Free Audit"}
             </Button>
 
             <p className="text-sm text-muted-foreground text-center">
               We'll respond within 24 hours on business days. Typically faster.
             </p>
           </form>
-        <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY}></div>
+          <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY}></div>
         </Card>
       </div>
     </section>
