@@ -7,7 +7,7 @@ export default function Header() {
     return (
          <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-white/80 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <Image src={logo} alt="Logo" width={120} height={40} />
+          <Link href="/"><Image src={logo} alt="Logo" width={120} height={40} /></Link>
           <nav className="hidden gap-8 md:flex">
             <Link href="#solution" className="font-semibold text-sm text-gray-800 hover:text-foreground transition-colors">
               Solution
