@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 // TODO: Replace video with actual video file that shows how the service works 
 
@@ -32,7 +33,9 @@ export function HeroSection() {
             </p>
           </div>
           <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300">
-            <video
+            <Image
+              alt="Design mock up and demo overview image for fitness studio website conversion optimization service"
+              fill
               src="/modern-fitness-studio-interior-with-training-equip.jpg"
               className="object-cover"
             />

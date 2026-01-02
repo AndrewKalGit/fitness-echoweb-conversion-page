@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card"
+import Link from "next/link"
 
 export function CaseStudiesSection() {
 
@@ -52,6 +53,14 @@ export function CaseStudiesSection() {
                       actually ready.
                     </p>
                   </div>
+                   <div>
+                    <h4 className="font-semibold mb-2">Live Link</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <Link href="https://elitecombattraining.com" className="text-gray-900 underline hover:text-gray-700">
+                        elitecombattraining.com
+                      </Link>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -85,6 +94,14 @@ export function CaseStudiesSection() {
                     <p className="text-muted-foreground leading-relaxed">
                       Self-filtering by budget. Inquiries already know what they're paying. Higher intent-to-join ratio.
                       No surprises.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Live Link</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <Link href="https://elitecombattraining.com" className="text-gray-900 underline hover:text-gray-700">
+                        elitecombattraining.com
+                      </Link>
                     </p>
                   </div>
                 </div>
@@ -122,7 +139,15 @@ export function CaseStudiesSection() {
                       explaining the basics.
                     </p>
                   </div>
-                </div>
+                     <div>
+                    <h4 className="font-semibold mb-2">Live Link</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <Link href="https://elitecombattraining.com" className="text-gray-900 underline hover:text-gray-700">
+                        elitecombattraining.com
+                      </Link>
+                    </p>
+                  </div>
+                </div> 
               </div>
             </div>
           </Card>
@@ -158,6 +183,14 @@ export function CaseStudiesSection() {
                     <p className="text-muted-foreground leading-relaxed">
                       Self-guided program selection. Inquiries already aligned with specific class types. Higher
                       conversion to membership.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2">Live Link</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      <Link href="https://elitecombattraining.com" className="text-gray-900 underline hover:text-gray-700">
+                        elitecombattraining.com
+                      </Link>
                     </p>
                   </div>
                 </div>

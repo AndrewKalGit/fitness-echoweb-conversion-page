@@ -22,7 +22,7 @@ export function ProblemSection() {
               <div>
               <h3 className="font-semibold mb-3 text-lg">Vague Inquiries</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Someone DMs asking &quot;what classes do you offer?&quot; You reply. They respond two days later with another half-formed question. Eventually, they disappear.
+               Turning inquiries into members is hard when you don&apos;t know what they&apos;re looking for. At which point on the sites are they making the inquiry?  
               </p>
               </div>
             </div>
@@ -46,8 +46,7 @@ export function ProblemSection() {
               <div>
               <h3 className="font-semibold mb-3 text-lg">Hidden Expectations</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Pricing isn&apos;t clear. Requirements aren&apos;t explained. People show up unprepared or don&apos;t show up at all because they&apos;re guessing.
-              </p>
+             Are they Open or Closed?  Are the class schedule current? Pricing updated? The pricing layout confusing or clear. What do I bring on the first day?</p>
               </div>
             </div>
             </Card>

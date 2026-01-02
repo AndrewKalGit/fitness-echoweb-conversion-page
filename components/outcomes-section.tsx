@@ -41,8 +41,7 @@ export function OutcomesSection() {
             </div>
             <h3 className="text-xl font-semibold mb-3">Less Time on Admin</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Automated capture. Organized data. Pre-qualified inquiries. You spend less time managing, more time
-              training.
+              Google Sheets script ready for you to click and organize all your lead data in one place.
             </p>
           </Card>
 
@@ -73,7 +72,7 @@ export function OutcomesSection() {
             </div>
             <h3 className="text-xl font-semibold mb-3">Realistic Approach</h3>
             <p className="text-muted-foreground leading-relaxed">
-              We focus on UX and conversion principles, not inflated promises. Mechanisms over hype.
+              We focus on UX and conversion principles, The goal is to get results, not just a pretty site.
             </p>
           </Card>
         </div>

@@ -59,10 +59,10 @@ export function SolutionSection() {
                 <Zap className="h-5 w-5 text-gray-900" />
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Automated Lead Capture</h3>
+                <h3 className="font-semibold mb-2">Automated Lead Organizer</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Inquiries flow directly into your system. No manual entry. No lost contacts. No wondering who to
-                  follow up with.
+                  Inquiries flow directly into your email. Then can be automatically organized into a spreadsheet for easy
+                  follow up, with a single click.
                 </p>
               </div>
             </div>
