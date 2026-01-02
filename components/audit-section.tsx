@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import emailjs from "@emailjs/browser"
 
 export function AuditSection() {
@@ -23,6 +23,8 @@ export function AuditSection() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const turnstileRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // Initialize EmailJS once when component mounts
@@ -34,10 +36,42 @@ export function AuditSection() {
     if (publicKey) {
       emailjs.init(publicKey)
     }
+
+    // Initialize Turnstile
+    const initTurnstile = () => {
+      if (window.turnstile && turnstileRef.current) {
+        window.turnstile.render(turnstileRef.current, {
+          sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY!,
+          callback: (token: string) => {
+            setTurnstileToken(token)
+          },
+        })
+      }
+    }
+
+    // Wait for Turnstile script to load
+    if (window.turnstile) {
+      initTurnstile()
+    } else {
+      const checkTurnstile = setInterval(() => {
+        if (window.turnstile) {
+          initTurnstile()
+          clearInterval(checkTurnstile)
+        }
+      }, 100)
+
+      return () => clearInterval(checkTurnstile)
+    }
   }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    if (!turnstileToken) {
+      alert("Please complete the CAPTCHA verification")
+      return
+    }
+
     setIsSubmitting(true)
     setSubmitStatus("idle")
 
@@ -81,6 +115,12 @@ export function AuditSection() {
           currentWebsite: "",
           biggestChallenge: "",
         })
+        setTurnstileToken(null)
+        
+        // Reset Turnstile
+        if (window.turnstile && turnstileRef.current) {
+          window.turnstile.reset(turnstileRef.current)
+        }
       } else {
         setSubmitStatus("error")
       }
@@ -202,6 +242,11 @@ export function AuditSection() {
               />
             </div>
 
+            {/* Turnstile CAPTCHA */}
+            <div className="flex justify-center">
+              <div ref={turnstileRef}></div>
+            </div>
+
             {submitStatus === "success" && (
               <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-900 text-sm">
                 Thanks for reaching out! We'll review your info and get back to you within 24-48 hours.
@@ -218,7 +263,7 @@ export function AuditSection() {
               type="submit"
               size="lg"
               className="w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 hover:from-gray-800 hover:via-gray-700 hover:to-gray-600"
-              disabled={isSubmitting || submitStatus === "success"}
+              disabled={isSubmitting || submitStatus === "success" || !turnstileToken}
             >
               {isSubmitting ? "Sending..." : submitStatus === "success" ? "✓ Request Sent" : "Request Free Audit"}
             </Button>
@@ -227,9 +272,18 @@ export function AuditSection() {
               We'll respond within 24 hours on business days. Typically faster.
             </p>
           </form>
-          <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITEKEY}></div>
         </Card>
       </div>
     </section>
   )
+}
+
+// Add TypeScript declaration for Turnstile
+declare global {
+  interface Window {
+    turnstile: {
+      render: (element: HTMLElement, options: { sitekey: string; callback: (token: string) => void }) => void
+      reset: (element: HTMLElement) => void
+    }
+  }
 }
