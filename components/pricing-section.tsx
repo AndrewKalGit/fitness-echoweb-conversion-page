@@ -75,6 +75,10 @@ export function PricingSection() {
                 <Check className="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
                 <span className="text-muted-foreground">Lead organization & email automation setup</span>
               </li>
+                <li className="flex gap-3">
+                <Check className="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
+                <span className="text-muted-foreground">Optimized for Search Engines</span>
+              </li>
               <li className="flex gap-3">
                 <Check className="h-5 w-5 text-gray-900 flex-shrink-0 mt-0.5" />
                 <span className="text-muted-foreground">Advanced text & writing optimized for conversions
